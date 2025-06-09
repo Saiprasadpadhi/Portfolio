@@ -25,11 +25,31 @@
       max-width: 900px;
       margin: auto;
     }
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+      justify-content: center;
+    }
+    .nav-buttons button {
+      background-color: #0f3460;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .nav-buttons button:hover {
+      background-color: #16213e;
+    }
     section {
+      display: none;
       margin-bottom: 40px;
     }
-    h1, h2 {
-      color: #1a1a2e;
+    section.active {
+      display: block;
     }
     ul {
       padding-left: 20px;
@@ -51,17 +71,26 @@
     <p>Cybersecurity Governance Professional | Aspiring Pentester</p>
   </header>
   <main>
-    <section>
+    <div class="nav-buttons">
+      <button onclick="showSection('about')">About Me</button>
+      <button onclick="showSection('summary')">Professional Summary</button>
+      <button onclick="showSection('competencies')">Core Competencies</button>
+      <button onclick="showSection('experience')">Experience</button>
+      <button onclick="showSection('certifications')">Certifications</button>
+      <button onclick="showSection('contact')">Contact</button>
+    </div>
+
+    <section id="about" class="active">
       <h2>About Me</h2>
       <p>Cybersecurity Governance professional with experience in securing IT systems, cloud environments, and product development. Passionate about penetration testing and proactive defense strategies.</p>
     </section>
 
-    <section>
+    <section id="summary">
       <h2>Professional Summary</h2>
       <p>Hands-on experience overseeing the cybersecurity lifecycle including TARA, secure implementation, V&V, monitoring, and incident response. Strong understanding of Azure and AWS security posture and internal auditing. Actively learning offensive security and conducting internal pentest activities.</p>
     </section>
 
-    <section>
+    <section id="competencies">
       <h2>Core Competencies</h2>
       <ul>
         <li>Cybersecurity Lifecycle Governance (TARA, V&V, Implementation)</li>
@@ -73,7 +102,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="experience">
       <h2>Professional Experience</h2>
       <ul>
         <li>Oversaw cybersecurity lifecycle across 40+ products and IT systems.</li>
@@ -84,7 +113,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="certifications">
       <h2>Certifications</h2>
       <ul>
         <li>Azure Security Engineer Associate</li>
@@ -93,12 +122,21 @@
       </ul>
     </section>
 
-    <section>
+    <section id="contact">
       <h2>Contact</h2>
       <p>Email: [your email here]</p>
       <p>LinkedIn: [LinkedIn URL]</p>
       <p>Download Resume: <a href="[link-to-your-resume.pdf]" class="resume-btn">Download PDF</a></p>
     </section>
   </main>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </body>
 </html>
